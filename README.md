@@ -20,6 +20,9 @@ Database is not used
 
 1. Run `bundle install`
 
+### Deployed on Heroku
+[a EPAM Logger](https://epam-logger.herokuapp.com/)
+
 ### Future Scope
 
 1. Can be worked on mutiple log file.

@@ -1,0 +1,51 @@
+<div class="container">
+  <div class='row'>
+    <h2 for="test" class="log-heading">Logger </h2>
+    <div class="log-body">
+      <%= form_tag parse_file_path, multipart: true do %>
+        <%= file_field_tag "file", class: 'file-input','data-show-preview'=> "false", 'data-show-upload': "false", 'data-show-caption': "true"%>
+        <%= submit_tag 'Parse' %>
+      <% end %>
+    </div>
+  </div>
+  <% if flash[:error] %>
+    <div class="alert alert-danger alert-dismissible show">
+      <strong>Error!</strong><%= flash[:error] %>
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </div>
+  <% elsif flash[:success] %>
+    <div class="alert alert-success alert-dismissible show">
+      <strong>Success!</strong> <%= flash[:success] %>
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </div>
+  <% elsif @results.nil? %>
+    <div class="alert alert-warning alert-dismissible show">
+      <strong>Warning!</strong> No record found.
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </div>
+  <% end %>
+  <% if @results %>
+    <% @results.each do |key, value| %>
+      <div class="panel <%= PANNEL_CLASS.sample %>">
+        <div class="panel-heading"><h5><%= key %></h5></div>
+        <div class="panel-body">
+          <table class = "table">
+            <tr>
+              <th>Total Count</th>
+              <th>Unique Count </th>
+              <th>Most Used IP </th>
+              <th>Most Used IP (count)</th>
+            </tr>
+            <tr>
+              <% detail = get_detail_log(value) %>
+              <td><%= detail[:total_count] %></td>
+              <td><%= detail[:uniq_count] %></td>
+              <td><%= detail[:max_ip_used] %></td>
+              <td><%= detail[:max_ip_used_count] %></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
