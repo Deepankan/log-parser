@@ -1,4 +1,4 @@
-# PROJECT NAME
+# Logger App
 
 ## Installation
 1. Ruby -> ruby 2.5.0p0 (2017-12-25 revision 61468) [x86_64-darwin17]
@@ -29,4 +29,3 @@ Database is not used
 2. Export Functionality to get displayed data.
 3. Pagination
 4. UI can be more better
-# log-parser
